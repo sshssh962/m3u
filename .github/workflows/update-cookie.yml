@@ -1,0 +1,51 @@
+name: Update __hdnea__ cookie everywhere in auto.m3u
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # every 12 hours
+  workflow_dispatch:
+
+jobs:
+  update-cookie:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Download source m3u and extract cookie
+      run: |
+        curl -L -o source.m3u "https://raw.githubusercontent.com/alex4528/m3u/refs/heads/main/jstar.m3u"
+
+        cookie_line=$(grep -m1 '#EXTHTTP' source.m3u)
+        new_cookie=$(echo "$cookie_line" | grep -o '__hdnea__=[^"]*')
+
+        echo "$cookie_line" > cookie_line.txt
+        echo "$new_cookie" > new_cookie.txt
+
+    - name: Replace cookie in auto.m3u
+      run: |
+        new_cookie=$(cat new_cookie.txt)
+        new_json=$(cat cookie_line.txt)
+
+        awk -v cookie="$new_cookie" -v jsonline="$new_json" '
+          {
+            if ($0 ~ /^#EXTHTTP:/) {
+              print jsonline;
+              next;
+            }
+            gsub(/__hdnea__=[^&"]+/, cookie);
+            gsub(/cookie=__hdnea__%3D[^&"]+/, "cookie=" cookie); # encoded
+            print;
+          }
+        ' auto.m3u > temp.m3u && mv temp.m3u auto.m3u
+
+    - name: Commit and push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add auto.m3u
+        git commit -m "Update cookie (__hdnea__) in EXTHTTP and MPD URLs" || echo "No changes"
+        git push origin HEAD:main
