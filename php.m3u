@@ -1,1 +1,23 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="1373" tvg-name="Disney Channel" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Disney_Channel.png" group-title="JIOTV+ Kids" group-logo="https://play-lh.googleusercontent.com/nB9r04Z3hpl-iA4dChI2ontKxsJKjPi1N-WsXrMngMRH3Js31M3lKpdO0gZqvfsIQK-x=w480-h960-rw",Disney Channel
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://clkey.vercel.app/api/results.php?keyid=5181d3e6698055578cedc5bfc86b3e56&key=3dca7917d8cf9bb7095dc72b48bdcd3c
+https://playflix.icu/mahesh/Jiotv/manifest.php?id=1373
+
+#EXTINF:-1 tvg-id="31" tvg-name="Zee Cinema HD" tvg-logo="https://i.ibb.co/Xt6gHdF/Goldmines-logo-removebg-preview.png" group-title="Movies" tvg-language="Hindi",Zee Cinema HD
+https://playflix.icu/mahesh/Jiotv/index.php?id=0-9-zeecinemahd
+
+#EXTINF:-1 tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/INBD4700018T7_20240710T022250SQUARE.png" group-title="Music",Sangeet Bangla
+https://jmp2.uk/sam-INBD4700018T7.m3u8
+
+#EXTINF:-1 tvg-id="sony-aath" tvg-name="Sony Aath" tvg-language="Bengali" tvg-logo="https://i.postimg.cc/bY12WVTm/SONY-AATH.png" group-title="Entertainment",Sony Aath
+https://tataplay.slivcdn.com/hls/live/2011641/SonyAathSD/master.m3u8
+
+#EXTINF:-1 tvg-logo="https://ev-img-cdn-lb.shoq.com.pk/prd-peg-data/default/images/logos/live/Hum.png" group-title="Drama",Hum TV
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=83404dd4292fec9e27173696f6e42dee:a9dd477034d4fb2e7e5dc7c21ce73fed
+https://live2.shoq.com.pk/live/eds/HUM_TV/DASH/HUM_TV.mpd
+
 
